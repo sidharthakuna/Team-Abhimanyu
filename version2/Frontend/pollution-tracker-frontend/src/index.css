@@ -1,0 +1,7 @@
+/* Most base styling lives in styles/global.css and styles/variables.css.
+   This file is kept for structural parity with the requested layout —
+   add any last-mile, page-agnostic tweaks here if needed. */
+
+html {
+  scroll-behavior: smooth;
+}

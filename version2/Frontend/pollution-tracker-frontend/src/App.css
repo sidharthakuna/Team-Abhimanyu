@@ -1,0 +1,4 @@
+.App,
+#root > div {
+  min-height: 100vh;
+}

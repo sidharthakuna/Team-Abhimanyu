@@ -1,0 +1,51 @@
+.citizen-page {
+  min-height: 100vh;
+  background: var(--color-paper);
+}
+
+.citizen-page__content {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-5) 0;
+}
+
+.citizen-page__intro {
+  margin-bottom: var(--space-5);
+}
+
+.citizen-page__heading {
+  font-size: var(--fs-xl);
+  margin-bottom: var(--space-2);
+}
+
+.citizen-page__sub {
+  font-size: var(--fs-sm);
+  color: var(--color-ink-soft);
+}
+
+.citizen-page__last-report {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-resolved-soft);
+  border: 1px solid var(--color-resolved);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4);
+}
+
+.citizen-page__last-report-icon {
+  font-size: 1.75rem;
+}
+
+.citizen-page__last-report strong {
+  display: block;
+  font-size: var(--fs-sm);
+  color: var(--color-resolved);
+}
+
+.citizen-page__last-report p {
+  font-size: var(--fs-xs);
+  color: var(--color-ink-soft);
+  margin-top: 2px;
+}

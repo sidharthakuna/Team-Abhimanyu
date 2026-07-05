@@ -1,0 +1,91 @@
+.municipal-page {
+  min-height: 100vh;
+  background: var(--color-paper);
+}
+
+.municipal-page__content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.municipal-page__intro {
+  margin-bottom: var(--space-1);
+}
+
+.municipal-page__heading {
+  font-size: var(--fs-xl);
+  margin-bottom: var(--space-2);
+}
+
+.municipal-page__sub {
+  font-size: var(--fs-sm);
+  color: var(--color-ink-soft);
+}
+
+.municipal-page__filters {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  padding-bottom: var(--space-1);
+}
+
+.municipal-page__filter {
+  flex-shrink: 0;
+  padding: var(--space-2) var(--space-4);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-paper-raised);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--color-ink-soft);
+}
+
+.municipal-page__filter--active {
+  color: white;
+  border-color: var(--color-municipal);
+  background: var(--color-municipal);
+}
+
+.municipal-page__filters .municipal-page__filter:first-child.municipal-page__filter--active {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+}
+
+.municipal-page__legend-slot {
+  overflow-x: auto;
+}
+
+.municipal-page__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.municipal-page__loading,
+.municipal-page__error {
+  text-align: center;
+  padding: var(--space-6);
+  color: var(--color-ink-soft);
+  font-size: var(--fs-sm);
+}
+
+.municipal-page__error {
+  color: var(--color-pending);
+}
+
+.municipal-page__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-7) var(--space-4);
+  color: var(--color-ink-soft);
+}
+
+.municipal-page__empty span {
+  font-size: 2rem;
+}

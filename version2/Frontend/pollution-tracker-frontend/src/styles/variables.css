@@ -1,0 +1,80 @@
+/* ============================================================
+   Design tokens for the Pollution Tracker civic app.
+   Every other CSS file in this project reads from these
+   variables — never hardcode a color or font elsewhere.
+   ============================================================ */
+
+:root {
+  /* ---- Color: ink & paper ---- */
+  --color-ink: #0f1b0f;
+  --color-ink-soft: #3a453a;
+  --color-paper: #f7f5f0;
+  --color-paper-raised: #ffffff;
+  --color-border: #dcd8cc;
+  --color-border-strong: #b8b3a3;
+
+  /* ---- Color: status system (matches backend ReportStatus/VerificationStatus) ---- */
+  --color-pending: #d9342b;
+  --color-pending-soft: #fbe4e2;
+  --color-assigned: #e0a100;
+  --color-assigned-soft: #fbf0d1;
+  --color-resolved: #1b7a43;
+  --color-resolved-soft: #ddf0e3;
+
+  /* ---- Color: role accent (citizen vs municipal) ---- */
+  --color-citizen: #d9342b;
+  --color-citizen-soft: #fbe4e2;
+  --color-municipal: #2e7bc0;
+  --color-municipal-soft: #dfeaf6;
+
+  /* ---- Color: emergency ---- */
+  --color-emergency: #b8291f;
+  --color-emergency-glow: rgba(184, 41, 31, 0.35);
+
+  /* ---- Type ---- */
+  --font-display: "Archivo Black", "Arial Black", "Helvetica Neue", sans-serif;
+  --font-body: "Inter", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "SF Mono", Menlo, monospace;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.5rem;
+  --fs-xl: 2rem;
+  --fs-2xl: 2.75rem;
+
+  /* ---- Spacing ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* ---- Radius ---- */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+
+  /* ---- Shadow ---- */
+  --shadow-sm: 0 1px 3px rgba(15, 27, 15, 0.08);
+  --shadow-md: 0 4px 16px rgba(15, 27, 15, 0.12);
+  --shadow-lg: 0 12px 32px rgba(15, 27, 15, 0.18);
+
+  /* ---- Motion ---- */
+  --ease-standard: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,44 @@
+.legend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-paper-raised);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-xs);
+  color: var(--color-ink-soft);
+  font-weight: 500;
+}
+
+.legend__group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  white-space: nowrap;
+}
+
+.legend__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.legend__dot--ring {
+  background: transparent;
+  border: 2px solid;
+}
+
+.legend__divider {
+  width: 1px;
+  height: 16px;
+  background: var(--color-border);
+}
+
+@media (max-width: 560px) {
+  .legend {
+    gap: var(--space-3);
+  }
+}

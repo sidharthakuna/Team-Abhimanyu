@@ -1,0 +1,107 @@
+.username-gate {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 27, 15, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 400;
+  padding: var(--space-5);
+  animation: gate-fade-in var(--duration-base) var(--ease-standard);
+}
+
+@keyframes gate-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.username-gate__card {
+  position: relative;
+  background: var(--color-paper-raised);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  max-width: 420px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+}
+
+.username-gate__cancel {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  background: none;
+  border: none;
+  font-size: var(--fs-lg);
+  color: var(--color-ink-soft);
+  line-height: 1;
+  padding: var(--space-1);
+}
+
+.username-gate__cancel:hover {
+  color: var(--color-ink);
+}
+
+.username-gate__eyebrow {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-municipal);
+  margin-bottom: var(--space-2);
+}
+
+.username-gate__heading {
+  font-size: var(--fs-lg);
+  margin-bottom: var(--space-2);
+}
+
+.username-gate__sub {
+  font-size: var(--fs-sm);
+  color: var(--color-ink-soft);
+  margin-bottom: var(--space-5);
+  line-height: 1.5;
+}
+
+.username-gate__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.username-gate__input {
+  padding: var(--space-3) var(--space-4);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-base);
+  background: var(--color-paper);
+}
+
+.username-gate__input:focus {
+  border-color: var(--color-municipal);
+  outline: none;
+}
+
+.username-gate__submit {
+  padding: var(--space-3) var(--space-4);
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-weight: 600;
+  font-size: var(--fs-base);
+  transition: opacity var(--duration-fast) var(--ease-standard);
+}
+
+.username-gate__submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.username-gate__submit:not(:disabled):hover {
+  opacity: 0.85;
+}
