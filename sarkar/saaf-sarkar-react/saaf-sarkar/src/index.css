@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+@import "./components.css";
+
+/* ============================================================
+   SAAF SARKAR — DESIGN TOKENS
+   Civic-monitoring system, one accent reserved for "live/active"
+   state, category colors that carry real meaning. Light mode is
+   independently tuned, not a naive invert.
+
+   Theme is selected via [data-theme="dark"|"light"] on <html>,
+   set by ThemeContext.
+   ============================================================ */
+
+:root,
+[data-theme="dark"] {
+  /* Surfaces */
+  --bg-base: #0b0f0d;
+  --bg-surface: #161c19;
+  --bg-surface-raised: #1e2521;
+  --bg-sheet: rgba(22, 28, 25, 0.92);
+  --bg-base-scrim: rgba(11, 15, 13, 0.85);
+
+  /* Text */
+  --text-primary: #f2f5f0;
+  --text-muted: #8a9188;
+  --text-dim: #565d5a;
+
+  /* Live / active accent — spend sparingly */
+  --accent-live: #c4f542;
+  --accent-live-dim: rgba(196, 245, 66, 0.16);
+  --on-accent: #0b0f0d;
+
+  /* Category colors — these ARE the data */
+  --cat-garbage: #e8a33d;
+  --cat-water_pollution: #3da5d9;
+  --cat-air_pollution: #9098a0;
+  --cat-industrial_waste: #d9534f;
+  --cat-sewage: #a98a5c;
+  --cat-other: #9b8cbe;
+
+  /* Status */
+  --status-pending: #e8a33d;
+  --status-assigned: #3da5d9;
+  --status-resolved: #c4f542;
+  --danger: #d9534f;
+  --danger-dim: rgba(217, 83, 79, 0.15);
+  --danger-border: rgba(217, 83, 79, 0.3);
+
+  /* AQI severity bands (European AQI scale) — used by aqiColorVar() so
+     every AQI number rendered anywhere (map overlay, header pill,
+     forecast peak) reads as an instant risk signal, not just a digit. */
+  --aqi-good: #6fd67a;
+  --aqi-fair: #c4f542;
+  --aqi-moderate: #e8c33d;
+  --aqi-poor: #e8a33d;
+  --aqi-severe: #d9534f;
+
+  /* Borders */
+  --border-subtle: rgba(242, 245, 240, 0.08);
+  --border-strong: rgba(242, 245, 240, 0.16);
+
+  /* Shadows */
+  --shadow-sheet: 0 -8px 32px rgba(0, 0, 0, 0.45);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+  /* Map tiles */
+  --map-tile-url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png";
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg-base: #f4f6f2;
+  --bg-surface: #ffffff;
+  --bg-surface-raised: #eef1ea;
+  --bg-sheet: rgba(255, 255, 255, 0.92);
+  --bg-base-scrim: rgba(244, 246, 242, 0.85);
+
+  --text-primary: #16201a;
+  --text-muted: #5b6a5e;
+  --text-dim: #8b978d;
+
+  --accent-live: #4b8a1f;
+  --accent-live-dim: rgba(75, 138, 31, 0.12);
+  --on-accent: #f4f6f2;
+
+  --cat-garbage: #b5720a;
+  --cat-water_pollution: #1c76a3;
+  --cat-air_pollution: #5b6670;
+  --cat-industrial_waste: #c23b36;
+  --cat-sewage: #8a6a3a;
+  --cat-other: #7159a3;
+
+  --status-pending: #b5720a;
+  --status-assigned: #1c76a3;
+  --status-resolved: #4b8a1f;
+  --danger: #c23b36;
+  --danger-dim: rgba(194, 59, 54, 0.1);
+  --danger-border: rgba(194, 59, 54, 0.35);
+
+  --aqi-good: #3d8b46;
+  --aqi-fair: #4b8a1f;
+  --aqi-moderate: #a3841f;
+  --aqi-poor: #b5720a;
+  --aqi-severe: #c23b36;
+
+  --border-subtle: rgba(22, 32, 26, 0.14);
+  --border-strong: rgba(22, 32, 26, 0.24);
+
+  --shadow-sheet: 0 -8px 32px rgba(22, 32, 26, 0.12);
+  --shadow-card: 0 4px 16px rgba(22, 32, 26, 0.08);
+
+  --map-tile-url: "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png";
+  color-scheme: light;
+}
+
+:root {
+  --font-display: "Archivo", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", -apple-system, "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
+
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-full: 999px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body,
+  #root {
+    transition: none;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: var(--r-full);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-strong);
+  border-top-color: var(--accent-live);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.animate-spin {
+  animation: spin 0.7s linear infinite;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent-live);
+  outline-offset: 2px;
+}
+
+.leaflet-container {
+  background: var(--bg-base) !important;
+  font-family: var(--font-body) !important;
+}
+
+[data-theme="light"] .leaflet-tile-pane {
+  filter: brightness(0.94) saturate(0.85);
+}
+
+[data-theme="light"] .leaflet-control-zoom a {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--bg-surface-raised) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--r-md) !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--bg-surface-raised) !important;
+}
+
+.leaflet-control-zoom a {
+  background: var(--bg-surface-raised) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-subtle) !important;
+}
